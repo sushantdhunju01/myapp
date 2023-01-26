@@ -5,7 +5,6 @@ import HealthAndSafetyRoundedIcon from '@mui/icons-material/HealthAndSafetyRound
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PersonIcon from '@mui/icons-material/Person';
-import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import PollRoundedIcon from '@mui/icons-material/PollRounded';
@@ -27,12 +26,12 @@ const Sidebar = () => {
                 </Link>
                 <p className="title">SERVICE</p>
                 <Link to='/products' style={{ textDecoration: 'none'}}>
-                <li className='list'><PrecisionManufacturingIcon className='icon'/><span>Products</span></li>
+                <li className='list'><PrecisionManufacturingIcon className='icon'/><span>Sales By Products</span></li>
                 </Link> 
                 <Link to='/sales' style={{ textDecoration: 'none'}}>
-                <li className='list'><PointOfSaleIcon className='icon'/><span>Sales</span></li>
+                <li className='list'><PointOfSaleIcon className='icon'/><span>Sales By Brand</span></li>
                 </Link>
-                <li className='list'><SignalCellularAltIcon className='icon'/><span>Market Analysis</span></li>
+           
                 <p className="title">SYSTEM</p>
                 <li className='list'><PollRoundedIcon className='icon'/><span>Stats</span></li>
                 <li className='list'><HealthAndSafetyRoundedIcon className='icon'/><span>System health</span></li>

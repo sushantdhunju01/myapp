@@ -8,14 +8,14 @@ import './home.scss'
 
 
 
-const Home = () => {
+const Home = (prop) => {
 
   return (
     <div className='home'>
         <Sidebar/>
         <div className="homeContainer">
         <Navbar/>
-            <Widgets/>
+            <Widgets />
             <div className="chartdata">
               <Chart />
               <Graph/>

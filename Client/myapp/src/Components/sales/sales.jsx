@@ -3,8 +3,8 @@ import './sales.scss';
 import Sidebar from '../../Components/sidebar/Sidebar';
 import Navbar from '../../Components/navbar/Navbar';
 import { DataGrid } from '@mui/x-data-grid';
-import { useState, useEffect} from 'react';
-import axios from 'axios';
+// import { useState, useEffect} from 'react';
+// import axios from 'axios';
 
 
 
@@ -35,19 +35,7 @@ const columns = [
   ];
   
 
-const Sales = () => {
-  
-
-  const [data, setData] = useState({})
-  
-  const loadData = async () => {
-    const response = await axios.get("/salesbybrand");
-    setData(response.data)
-    console.log(response.data)
-  }
-  useEffect(()=>{
-     loadData()
-    }, [])
+const Sales = (prop) => {
 
   return (
     <div className='salesdata'>
@@ -59,7 +47,7 @@ const Sales = () => {
      
       <DataGrid 
       getRowId={(row) => Math.floor(Math.random() * 100) + 1}
-      rows= {data}
+      rows= {prop.tabledata}
       columns={columns}
       pageSize={5}
       rowsPerPageOptions={[5]}

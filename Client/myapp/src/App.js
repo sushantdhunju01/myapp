@@ -5,7 +5,7 @@ import './style/style.scss';
 import React, { useState, useEffect } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Button from '@mui/material/Button';
-
+import axios from 'axios';
 import {
   Route,
   BrowserRouter,
@@ -43,14 +43,38 @@ function App() {
     </React.Fragment>
  
   );
+
+
+  const [productdata, setProductData] = useState({});
+  const [salesdata, setSalesData] = useState({});
+
+  const loadproductData = async () => {
+    const response = await axios.get("/salesbyproduct");
+    setProductData(response.data)
+    
+  };
+
+  const loadsalesData = async () => {
+    const response = await axios.get("/salesbybrand");
+    setSalesData(response.data)
+ 
+  };
+  
+  useEffect(()=>{
+    
+    loadproductData();
+    loadsalesData()
+    }, [productdata, salesdata])
+
+
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
          <Route path='/'>
-         <Route index element={<Home/>}/>
-         <Route path='products' element={<Products/>}/>
-         <Route path='sales' element={<Sales/>}/>
+         <Route index element={<Home />}/>
+         <Route path='products' element={<Products tabledata = {productdata}/>}/>
+         <Route path='sales' element={<Sales tabledata = {salesdata}/>}/>
          </Route>
       </Routes>
       </BrowserRouter>

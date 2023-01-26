@@ -3,7 +3,9 @@ import "./widgets.scss";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 
-const Widgets = () => {
+const Widgets =  () => {
+  
+  
   return (
     <div className='widget'>
         <div className='widgetitem'>
