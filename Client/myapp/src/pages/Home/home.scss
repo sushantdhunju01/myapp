@@ -1,0 +1,16 @@
+.home {
+    display: flex;
+   
+
+    .homeContainer {
+         flex: 6;
+    }
+
+    .chartdata{
+        margin-top: 40px;
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+             
+    }
+}

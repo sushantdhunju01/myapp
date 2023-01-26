@@ -1,0 +1,21 @@
+.Productdata {
+    display: flex;
+    width: 100%;
+   
+   
+
+    .productcontainer {
+         flex: 6;
+  
+    }
+    .tabledata{
+        margin-top: 50px;
+        height: 40%;
+        padding: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     
+    }
+}
+
