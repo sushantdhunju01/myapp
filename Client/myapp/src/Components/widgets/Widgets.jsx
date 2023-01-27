@@ -7,7 +7,6 @@ const Widgets =  ({productdata, salesdates}) => {
   if(productdata === undefined || salesdates === undefined){
     return null
   }
-  console.log("hmm", salesdates)
   let topprofit = productdata.reduce((previous, current) => {
     return current.TotalProfit > previous.TotalProfit ? current : previous;
   });
