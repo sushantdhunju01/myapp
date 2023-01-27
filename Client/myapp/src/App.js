@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import moment from 'moment';
 import {
   Route,
   BrowserRouter,
@@ -15,6 +16,10 @@ import {
 
 
 function App() {
+  
+  const [salesdates, setsalesdate] = useState([]);
+  const [productdata, setProductData] = useState([]);
+  const [salesdata, setSalesData] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
@@ -44,10 +49,6 @@ function App() {
  
   );
 
-
-  const [productdata, setProductData] = useState({});
-  const [salesdata, setSalesData] = useState({});
-
   const loadproductData = async () => {
     const response = await axios.get("/salesbyproduct");
     setProductData(response.data)
@@ -56,15 +57,26 @@ function App() {
 
   const loadsalesData = async () => {
     const response = await axios.get("/salesbybrand");
-    setSalesData(response.data)
+  
+    setSalesData(response.data.map((item,index)=> {
+       return {id:index+1,...item}
+    }))
  
   };
+
+  const loadsalesdate = async () => {
+    const response = await axios.get("/salesdates");
+    setsalesdate(response.data.map(item => {
+      const month = moment(item.date).format("DD MMMM");
+      return { ...item, month };
+    }));
+  }
   
   useEffect(()=>{
-    
     loadproductData();
-    loadsalesData()
-    }, [productdata, salesdata])
+    loadsalesData();
+    loadsalesdate();
+    }, [])
 
 
   return (
@@ -72,14 +84,14 @@ function App() {
       <BrowserRouter>
       <Routes>
          <Route path='/'>
-         <Route index element={<Home />}/>
-         <Route path='products' element={<Products tabledata = {productdata}/>}/>
-         <Route path='sales' element={<Sales tabledata = {salesdata}/>}/>
+         <Route index element={<Home productdata ={productdata} salesdates = {salesdates}/>}/>
+         <Route path='products' element={<Products productdata ={productdata}/>}/>
+         <Route path='sales' element={<Sales salesdata={salesdata}/>}/>
          </Route>
       </Routes>
       </BrowserRouter>
       <div>
-            <Snackbar
+        <Snackbar
   open={showAlert}
   autoHideDuration={6000}
   message="Data Obtained , Please refresh"

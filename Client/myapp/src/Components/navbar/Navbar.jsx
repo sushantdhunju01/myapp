@@ -2,7 +2,6 @@ import React from 'react'
 import "./navbar.scss"
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import LanguageRoundedIcon from '@mui/icons-material/LanguageRounded';
-import LightbulbRoundedIcon from '@mui/icons-material/LightbulbRounded';
 import LightbulbTwoToneIcon from '@mui/icons-material/LightbulbTwoTone';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import Badge from '@mui/material/Badge'

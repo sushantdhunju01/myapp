@@ -3,19 +3,37 @@ import "./widgets.scss";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 
-const Widgets =  () => {
-  
-  
+const Widgets =  ({productdata, salesdates}) => {
+  if(productdata === undefined || salesdates === undefined){
+    return null
+  }
+  console.log("hmm", salesdates)
+  let topprofit = productdata.reduce((previous, current) => {
+    return current.TotalProfit > previous.TotalProfit ? current : previous;
+  });
+
+  let leastprofit = productdata.reduce((previous, current) => {
+    return current.TotalQuantitySold < previous.TotalQuantitySold ? current : previous;
+  });
+
+  let dateprofit = salesdates.reduce((previous, current) => {
+    return current.total_sales < previous.total_sales ? current : previous;
+  });
+
+  let dateloss = salesdates.reduce((previous, current) => {
+    return current.total_sales < previous.total_sales ? current : previous;
+  });
+ 
   return (
     <div className='widget'>
         <div className='widgetitem'>
           <div className='item'>
             <div>Most Profitable Product</div>
-            <div>Product</div>
+            <div><h2>{topprofit.productname}</h2></div>
             </div>
           <div className='item'>
           
-          <div style={{ color: 'green', fontWeight: 30 }}>$1000</div>
+          <div style={{ color: 'green', fontWeight: 30 }}>${topprofit.TotalProfit}</div>
             
           </div>
         </div>
@@ -23,20 +41,20 @@ const Widgets =  () => {
         <div className='widgetitem'>
           <div className='item'>
             <div>Least Profitable product</div>
-            <div>Product</div>
+            <div><h2>{leastprofit.productname}</h2></div>
             </div>
           <div className='item'>
-          <div style={{ color: 'red', fontWeight: 30 }}>$1000</div>
+          <div style={{ color: 'red', fontWeight: 30 }}>${leastprofit.TotalProfit}</div>
           </div>
         </div>
 
         <div className='widgetitem'>
           <div className='item'>
             <div>Date of highest sales </div>
-            <div>Date</div>
+            <div style={{color: "green"}}>{dateprofit.month}</div>
             </div>
           <div className='item'>
-          <div><AccessTimeIcon/></div>
+          <div style={{color: "green"}}><AccessTimeIcon/></div>
             
           </div>
         </div>
@@ -44,10 +62,10 @@ const Widgets =  () => {
         <div className='widgetitem'>
           <div className='item'>
             <div>Date of least sales</div>  
-            <div>Date</div>
+            <div style={{color: "Red"}}>{dateloss.month}</div>
             </div>
           <div className='item'>
-          <div><AccessTimeIcon/></div>
+          <div style={{color: "Red"}}><AccessTimeIcon/></div>
           </div>
         </div>
 

@@ -3,11 +3,6 @@ import './products.scss';
 import Sidebar from '../../Components/sidebar/Sidebar';
 import Navbar from '../../Components/navbar/Navbar';
 import { DataGrid } from '@mui/x-data-grid';
-// import { useState, useEffect} from 'react';
-// import axios from 'axios';
-
-
-
 
 
 const columns = [
@@ -39,17 +34,19 @@ const columns = [
   ];
   
 
-const Products = (prop) => {
+const Products = ({productdata}) => {
+  if(productdata.length === 0 ){
+    return null
+  }
   return (
     <div className='Productdata'>
     <Sidebar/>
     <div className="productcontainer">
     <Navbar/>
-    <div className='tabledata'>
-
+    <div className='tabledata' >
       <DataGrid 
       getRowId={(row) => row?.product_id}
-      rows= {prop.tabledata}
+      rows= {productdata}
       columns={columns}
       pageSize={5}
       rowsPerPageOptions={[5]}
