@@ -27,7 +27,6 @@ const db_fetch = mysql.createPool({
           console.log(err)
         }
         else {
-          console.log(result)
           res.json(result)
         }
        })   
@@ -68,7 +67,7 @@ const db_fetch = mysql.createPool({
     })   
   } 
   catch(e) {
-   console.log(e)
+    console.log(e)
     res.sendStatus(500)
   }
 });

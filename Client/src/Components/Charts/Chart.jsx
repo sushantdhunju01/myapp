@@ -5,6 +5,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 const Chart = (tabledata) => {
+  let revenuetotal = tabledata.table.reduce((total, num)=>{return total+num}, 0);
   return (
     <div className='chart'>
         <div className="top">
@@ -12,9 +13,9 @@ const Chart = (tabledata) => {
            <DragIndicatorIcon/> 
         </div>
         <div className="bottom">
-        <CircularProgressbar value={70} text={`70%`} strokeWidth={5}/>;
+        <CircularProgressbar value={revenuetotal} maxValue={100000000} text={'$'+ revenuetotal} strokeWidth={5}/>;
         <div className='details'>
-        <p className="title">${tabledata.table.reduce((total, num)=>{ return total+num}, 0)}</p>
+        <p className="title">100 million Circle</p>
         </div>
         </div>
     </div>
