@@ -14,7 +14,6 @@ import {
 } from "react-router-dom";
 
 
-
 function App() {
   
   const [salesdates, setsalesdate] = useState([]);

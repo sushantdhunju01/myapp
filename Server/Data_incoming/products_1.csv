@@ -1,0 +1,10 @@
+product_id,product_name,brand_name,cost_price ,selling_price,category,expiry_date
+1,Cheese Yogurt,Danone,160,180,Food,2023-01-25
+2,Pepsodent,Pepsodent,100,110,Health & Care,2023-01-26
+3,Bagel,Bimbo,250,400,Food,2023-01-27
+4,Sprite,Coca-Cola,50,90,Food,2023-01-28
+5,Palmolive,B.J. Johnson,1050,1200,Health & Care,2023-01-29
+6,Downy,Procter & Gamble,5000,5100,Health & Care,2023-01-30
+7,Sunlight,Lever Brothers,360,400,Home Appliance,2023-01-31
+8,Kitkat,Nestlé's,30,50,Food,2023-02-01
+9,Nescafe,Nestlé's,400,500,Food,2023-02-02

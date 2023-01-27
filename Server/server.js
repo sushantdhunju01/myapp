@@ -16,17 +16,18 @@ const db_fetch = mysql.createPool({
     user:"root",
     password:"your_new_password",
     port: "3306",
-    database: "uday"
+    database: "dashboard"
   })
   
   
   app.get('/salesbyproduct', async (req, res) => {
      try{
-       db_fetch.query("SELECT product.product_id, product.product_name as productname, product.brand_name as brandname, product.category as category, SUM(sales.quantity) as TotalQuantitySold, SUM(sales.total_transacion_amount) as TotalRevenue, SUM(sales.total_transacion_amount - (product.cost_price * sales.quantity)) as TotalProfit FROM product JOIN sales ON product.product_id = sales.product_id GROUP BY product.product_id, product.product_name, product.brand_name, product.category", (err, result) => {
+       db_fetch.query("SELECT products.product_id, products.product_name as productname, products.brand_name as brandname, products.category as category, SUM(sales.quantity) as TotalQuantitySold, SUM(sales.total_transaction_amount) as TotalRevenue, SUM(sales.total_transaction_amount - (products.cost_price * sales.quantity)) as TotalProfit FROM products JOIN sales ON products.product_id = sales.product_id GROUP BY products.product_id, products.product_name, products.brand_name, products.category", (err, result) => {
         if(err){
           console.log(err)
         }
         else {
+          console.log(result)
           res.json(result)
         }
        })   
@@ -39,7 +40,7 @@ const db_fetch = mysql.createPool({
 
   app.get('/salesbybrand', async (req, res) => {
     try{
-      db_fetch.query("SELECT product.brand_name as BrandName , MAX(product.product_name) as MostSoldProduct, SUM(sales.quantity) as TotalQuantitySold, SUM(sales.total_transacion_amount) as TotalRevenue, SUM(sales.total_transacion_amount - (product.cost_price * sales.quantity)) TotalProfit FROM product JOIN sales ON product.product_id = sales.product_id GROUP BY product.brand_name;", (err, result) => {
+      db_fetch.query("SELECT products.brand_name as BrandName , MAX(products.product_name) as MostSoldProduct, SUM(sales.quantity) as TotalQuantitySold, SUM(sales.total_transaction_amount) as TotalRevenue, SUM(sales.total_transaction_amount - (products.cost_price * sales.quantity)) TotalProfit FROM products JOIN sales ON products.product_id = sales.product_id GROUP BY products.brand_name;", (err, result) => {
        if(err){
          console.log(err)
        }
@@ -57,7 +58,7 @@ const db_fetch = mysql.createPool({
 
  app.get('/salesdates', async (req, res) => {
   try{
-    db_fetch.query("SELECT transaction_date, SUM(total_transacion_amount) as total_sales FROM sales GROUP BY transaction_date", (err, result) => {
+    db_fetch.query("SELECT transaction_date, SUM(total_transaction_amount) as total_sales FROM sales GROUP BY transaction_date", (err, result) => {
      if(err){
        console.log(err)
      }
@@ -75,6 +76,6 @@ const db_fetch = mysql.createPool({
 
 app.listen(process.env.PORT || '5000', ()=> {
     console.log(`Server is running on port: ${process.env.PORT || '5000'}`);
-
+    console.log("Database Connected!");
 });
  

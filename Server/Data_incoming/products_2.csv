@@ -1,0 +1,12 @@
+product_id,product_name,brand_name,cost_price ,selling_price,category,expiry_date
+10,Nescafe Gold,Nestlé's,600,650,Food,2023-02-03
+11,Beauty soap,Lux,80,100,Health & Care,2024-08-12
+12,Beauty soap,Dove,180,200,Health & Care,2024-08-13
+13,Knorr Soup,Knorr ,170,180,Food,2024-08-14
+14,Sunsilk Shampoo,Sunsilk ,220,250,Health & Care,2024-08-15
+15,Indomie Instant Noodle,Indomie,15,20,Food,2024-08-16
+16,Lay's Chips,Lay's,80,120,Food,2024-08-17
+17,Colgate,Colgate,80,90,Health & Care,2024-08-18
+18,Maggi Noddles,Maggi,65,70,Food,2024-08-19
+19,Turborg Beer,Turborg,210,250,Food & Beverage ,2024-08-20
+20,Calsberg Beer,Calsberg,310,350,Food & Beverage ,2021-10-09
