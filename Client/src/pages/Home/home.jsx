@@ -7,7 +7,6 @@ import Graph from '../../Components/Graph/graph'
 import './home.scss'
 
 
-
 const Home = ({productdata, salesdates}) => {
   if(productdata.length === 0 || JSON.stringify(productdata) === "{}" || salesdates.length === 0 || JSON.stringify(salesdates) === "{}" ){
     return null
